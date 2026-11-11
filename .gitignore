@@ -1,0 +1,16 @@
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+.scrapinghub.yml
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.scrapy/
+*.jsonl
+observations.json
+.DS_Store
