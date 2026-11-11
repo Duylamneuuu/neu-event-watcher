@@ -1,0 +1,4 @@
+projects:
+  default: 884885
+stacks:
+  default: scrapy:2.18-20260824
