@@ -34,6 +34,7 @@ def main():
     scraped = []
     crawl_return_code = None
     crawl_error = None
+    crawl_diagnostics = []
     if due:
         with tempfile.TemporaryDirectory() as temp_dir:
             path = Path(temp_dir) / "records.jsonl"
@@ -46,6 +47,15 @@ def main():
                 if result.returncode:
                     crawl_error = "Scrapy process exited with code " + str(result.returncode)
                     print("::warning::" + crawl_error, flush=True)
+                # Record bounded, non-sensitive diagnostics when a page cannot be read.
+                markers = ("forbidden by robots.txt", "ignoring response",
+                           "downloader/exception", "downloader/response_status",
+                           "dnslookup", "retrying", "robots.txt")
+                diagnostics = [line.strip()[-280:] for line in result.stderr.splitlines()
+                               if any(marker in line.lower() for marker in markers)]
+                crawl_diagnostics = diagnostics[-8:]
+                if crawl_diagnostics:
+                    print("crawler diagnostics: " + json.dumps(crawl_diagnostics, ensure_ascii=False), flush=True)
                 if path.exists():
                     for line in path.read_text(encoding="utf-8").splitlines():
                         if line.strip():
@@ -68,7 +78,9 @@ def main():
                 **event,
                 "checked_at_utc": now.isoformat(),
                 "registration_status": "UNCERTAIN",
-                "status_confidence": "no_record_robots_or_dynamic_or_error",
+                "status_confidence": ("robots_disallowed" if any(
+                    "forbidden by robots.txt" in line.lower() for line in crawl_diagnostics)
+                    else "no_record_network_or_dynamic_or_error"),
                 "manual_review_required": True,
                 "network_request_sent": True,
                 "note": "No rendered record returned; verify manually with organizer.",
@@ -83,6 +95,7 @@ def main():
         "crawl_attempted": bool(due),
         "crawl_exit_code": crawl_return_code,
         "crawl_error": crawl_error,
+        "crawl_diagnostics": crawl_diagnostics,
         "events": complete,
         "note": "Read-only evidence; never publish an OPEN claim from an unverified source.",
     }
