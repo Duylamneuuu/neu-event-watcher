@@ -44,3 +44,17 @@ Alternative CLI, in repository root: `pip install shub && shub login && shub dep
 - Scrapy Cloud student benefit is a *hosting unit*, not unlimited paid Zyte API usage.
 
 Official docs: https://docs.zyte.com/scrapy-cloud/usage/deployment.html
+
+## Daily automated evidence check (GitHub Actions, no login required)
+
+GitHub Actions now performs a single, rate-limited, read-only scrape at **15:17 Vietnam time** (08:17 UTC) and on manual workflow dispatch. Source: `.github/workflows/daily-watch.yml`.
+
+- [Latest public snapshot](https://raw.githubusercontent.com/Duylamneuuu/neu-event-watcher/watcher-data/latest.json)
+- [History branch](https://github.com/Duylamneuuu/neu-event-watcher/tree/watcher-data/history)
+- [Workflow history](https://github.com/Duylamneuuu/neu-event-watcher/actions/workflows/daily-watch.yml)
+
+Snapshots are written to **watcher-data**, not `main`, so daily observations do not trigger Zyte automatic code deployments. If the public page cannot be fetched or rendered, the status remains `UNCERTAIN`; an unobserved form is never called `OPEN`. As soon as the listed event has started, the runner emits `EVENT_ENDED` without fetching its page.
+
+**Zyte Scrapy Cloud:** project `884885` is deployed and the spider is available, but no cloud Periodic Job has been enabled. The GitHub schedule is a separate lightweight backup; it does not consume Zyte units or use Zyte API credentials. Avoid scheduling both copies of the crawler simultaneously until deduplication is added.
+
+GitHub may disable scheduled actions on a public repository after 60 days without activity; check Actions if reports unexpectedly stop.
