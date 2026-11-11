@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-11T09:28:23.036861+00:00",
+  "generated_at_utc": "2026-11-11T09:30:22.849832+00:00",
   "execution_environment": "github_actions",
   "scrapy_cloud_job": false,
   "sources_configured": 1,
@@ -8,32 +8,7 @@
   "crawl_exit_code": 0,
   "crawl_error": null,
   "crawl_diagnostics": [
-    "'scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',",
-    "'scrapy.spidermiddlewares.referer.RefererMiddleware',",
-    "'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',",
-    "'scrapy.spidermiddlewares.depth.DepthMiddleware',",
-    "'scrapy.spidermiddlewares.metacopy.MetaCopyDetectionMiddleware']",
-    "2026-11-11 09:28:23 [scrapy.middleware] INFO: Enabled item pipelines:",
-    "[]",
-    "2026-11-11 09:28:23 [scrapy.core.engine] INFO: Spider opened",
-    "2026-11-11 09:28:23 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)",
-    "2026-11-11 09:28:23 [scrapy.extensions.remote_control] INFO: Remote control HTTP server listening on port 46783 (job 2232-4c78e5cbe86d49eda8c43f084e7bbc9d)",
-    "2026-11-11 09:28:23 [scrapy.core.engine] INFO: Closing spider (finished)",
-    "2026-11-11 09:28:23 [scrapy.extensions.feedexport] INFO: Stored jsonl feed (0 items) in: /tmp/tmpm92usb9x/records.jsonl",
-    "2026-11-11 09:28:23 [scrapy.statscollectors] INFO: Dumping Scrapy stats:",
-    "{'elapsed_time_seconds': 0.0018446560000029422,",
-    "'feedexport/item_count/FileFeedStorage': 0,",
-    "'feedexport/success_count/FileFeedStorage': 1,",
-    "'finish_reason': 'finished',",
-    "'finish_reason_error': False,",
-    "'finish_time': datetime.datetime(2026, 11, 11, 9, 28, 23, 840883, tzinfo=datetime.timezone.utc),",
-    "'items_per_minute': None,",
-    "'log_count/INFO': 3,",
-    "'memusage/max': 89001984,",
-    "'memusage/startup': 89001984,",
-    "'responses_per_minute': None,",
-    "'start_time': datetime.datetime(2026, 11, 11, 9, 28, 23, 839036, tzinfo=datetime.timezone.utc)}",
-    "2026-11-11 09:28:23 [scrapy.core.engine] INFO: Spider closed (finished)"
+    "'downloader/response_status_count/200': 2,"
   ],
   "events": [
     {
@@ -43,12 +18,25 @@
       "url": "https://quickom.net/event/sea-novation-7179",
       "event_datetime": "2026-11-12T18:30:00+07:00",
       "registration_deadline_original": "2026-11-11",
-      "checked_at_utc": "2026-11-11T09:28:23.036861+00:00",
-      "registration_status": "UNCERTAIN",
-      "status_confidence": "no_record_network_or_dynamic_or_error",
-      "manual_review_required": true,
-      "network_request_sent": true,
-      "note": "No rendered record returned; verify manually with organizer."
+      "checked_at_utc": "2026-11-11T09:30:28.569903+00:00",
+      "final_url": "https://quickom.net/event/sea-novation-7179",
+      "http_status": 200,
+      "registration_status": "SOLD_OUT",
+      "status_confidence": "explicit_text",
+      "evidence_excerpt": "a2, đại học kinh tế quốc dân, 207 đường giải phóng, phường đại la, hà nội đăng ký sea-novation hết vé hết vé về sự kiện [sea-novation] chính thức mở đơn đăng ký tham gia sea-novation - can business save the nature? ———————————",
+      "registration_links": [
+        "https://quickom.net/",
+        "https://quickom.net/p/CLB-Khoi-nghiep-Sang-tao-Dynamic-NEU-987",
+        "https://quickom.net/about-us",
+        "https://quickom.net/contact-us",
+        "https://quickom.net/support",
+        "https://quickom.net/blog",
+        "https://quickom.net/request-corporate"
+      ],
+      "content_hash_sha256": "99aba498bab1d5611b81c14cdc54e0e81c1b8de961f46d1fd152655e908d43dd",
+      "page_text_length": 3095,
+      "manual_review_required": false,
+      "note": "Snapshot only; verify with organizer and compare future jobs before updating a digest."
     }
   ],
   "note": "Read-only evidence; never publish an OPEN claim from an unverified source."
