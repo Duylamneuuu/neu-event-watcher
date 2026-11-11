@@ -54,6 +54,12 @@ def main():
                 diagnostics = [line.strip()[-280:] for line in result.stderr.splitlines()
                                if any(marker in line.lower() for marker in markers)]
                 crawl_diagnostics = diagnostics[-8:]
+                if path.exists() and not path.stat().st_size:
+                    # When Scrapy exits zero but extracts nothing, retain bounded
+                    # stderr tail. No credentials are configured in this crawler.
+                    tail = [line.strip()[:320] for line in result.stderr.splitlines()
+                            if line.strip()][-26:]
+                    crawl_diagnostics = (crawl_diagnostics + tail)[-30:]
                 if crawl_diagnostics:
                     print("crawler diagnostics: " + json.dumps(crawl_diagnostics, ensure_ascii=False), flush=True)
                 if path.exists():
