@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-11T09:19:53.795629+00:00",
+  "execution_environment": "github_actions",
+  "scrapy_cloud_job": false,
+  "sources_configured": 1,
+  "crawl_attempted": true,
+  "crawl_exit_code": 0,
+  "crawl_error": null,
+  "events": [
+    {
+      "event_id": "sea-novation-2026",
+      "event_name": "SEA-NOVATION — Can Business Save Nature?",
+      "organizer": "CLB Khởi nghiệp Sáng tạo Dynamic NEU",
+      "url": "https://quickom.net/event/sea-novation-7179",
+      "event_datetime": "2026-11-12T18:30:00+07:00",
+      "registration_deadline_original": "2026-11-11",
+      "checked_at_utc": "2026-11-11T09:19:53.795629+00:00",
+      "registration_status": "UNCERTAIN",
+      "status_confidence": "no_record_robots_or_dynamic_or_error",
+      "manual_review_required": true,
+      "network_request_sent": true,
+      "note": "No rendered record returned; verify manually with organizer."
+    }
+  ],
+  "note": "Read-only evidence; never publish an OPEN claim from an unverified source."
+}
