@@ -11,7 +11,7 @@ class EventStatusSpider(scrapy.Spider):
     name = 'event_status'
     handle_httpstatus_list = [401, 403, 404, 429]
 
-    def start_requests(self):
+    async def start(self):
         for event in EVENTS:
             url = event['url']
             if urlparse(url).scheme != 'https':
